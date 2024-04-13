@@ -14,7 +14,7 @@ final class MovieQuizViewController: UIViewController {
     
     @IBOutlet private weak var noButton: UIButton!
     
-    @IBOutlet weak var imageUI: UIImageView!
+    @IBOutlet private weak var imageUI: UIImageView!
     
     
     private var currentQuestionIndex = 0
@@ -160,6 +160,9 @@ final class MovieQuizViewController: UIViewController {
     
     private func showAnswerResult(isCorrect: Bool) {
         
+        
+        yesButton.isEnabled = false
+        noButton.isEnabled = false
         imageUI.layer.masksToBounds = true
         imageUI.layer.borderWidth = 8
         
@@ -179,6 +182,9 @@ final class MovieQuizViewController: UIViewController {
         
     }
     private func showNextQuestionOrResults() {
+        
+        yesButton.isEnabled = true
+        noButton.isEnabled = true
         
         imageUI.layer.borderWidth = 0
         
