@@ -56,7 +56,7 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate{
         
         questionFactory.requestNextQuestion()
         statisticService = StatisticServiceImplementation()
-
+        
         
         super.viewDidLoad()
     }

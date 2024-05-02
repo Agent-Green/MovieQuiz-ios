@@ -10,13 +10,7 @@ import UIKit
 
 
 class AlertPresenter : AlertPresenterProtocol {
-    
-//    weak var delegate : AlertPresenterProtocol?
-//    
-//    func setup(delegate : AlertPresenterProtocol){
-//        self.delegate = delegate}
-    
-    
+
     weak var delegate : UIViewController?
     
     init(delegate: UIViewController) {

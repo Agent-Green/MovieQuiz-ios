@@ -55,10 +55,10 @@ final class StatisticServiceImplementation : StatisticServiceProtocol{
         
         gamesCount += 1
         
-        let correct = userDefaults.integer(forKey: Keys.correct.rawValue) + count
+        let correct = userDefaults.double(forKey: Keys.correct.rawValue) + Double(count)
         userDefaults.set(correct, forKey: Keys.correct.rawValue)
         
-        let total = userDefaults.integer(forKey: Keys.total.rawValue) + amount
+        let total = userDefaults.double(forKey: Keys.total.rawValue) + Double(amount)
         userDefaults.set(total, forKey: Keys.total.rawValue)
         
         let newGame = GameRecord(correct: count, total: amount, date: Date())
