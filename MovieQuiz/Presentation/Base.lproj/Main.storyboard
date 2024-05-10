@@ -22,8 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="taO-Q4-vce">
-                                <rect key="frame" x="20" y="63" width="388" height="835"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="taO-Q4-vce">
+                                <rect key="frame" x="20" y="57" width="388" height="835"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HH5-pN-BzL">
                                         <rect key="frame" x="0.0" y="0.0" width="388" height="23.333333333333332"/>
@@ -42,7 +42,7 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mq image 1" translatesAutoresizingMaskIntoConstraints="NO" id="ui0-Eo-KgC" userLabel="Preview Image">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ui0-Eo-KgC" userLabel="Preview Image">
                                         <rect key="frame" x="0.0" y="43.333333333333314" width="388" height="582"/>
                                         <color key="backgroundColor" name="YP White"/>
                                         <constraints>
@@ -108,10 +108,11 @@
                                         </constraints>
                                     </stackView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="Ssx-ic-GTc" firstAttribute="top" secondItem="ui0-Eo-KgC" secondAttribute="bottom" constant="20" id="3ip-qB-11v"/>
-                                </constraints>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="zE0-ah-H6L">
+                                <rect key="frame" x="20" y="453" width="388" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="YP Black"/>
@@ -126,6 +127,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="zE0-ah-H6L" id="Skc-fa-ljr"/>
                         <outlet property="imageUI" destination="ui0-Eo-KgC" id="HYh-lp-g27"/>
                         <outlet property="indexLabel" destination="A7x-jR-LFX" id="4ZM-it-z2k"/>
                         <outlet property="noButton" destination="TCG-SR-SFp" id="s0L-HR-AL7"/>
@@ -140,7 +142,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="mq image 1" width="900" height="1357"/>
         <namedColor name="YP Black">
             <color red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
