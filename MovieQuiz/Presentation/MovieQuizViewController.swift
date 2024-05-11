@@ -43,9 +43,9 @@ final class MovieQuizViewController: UIViewController, QuestionFactoryDelegate{
         
         indexLabel.font = UIFont(name: "YSDisplay-Medium", size: 20)
         
-        yesButton.titleLabel?.font = UIFont(name: "YSDisplay-Medium", size: 24)
+        yesButton.titleLabel?.font = UIFont(name: "YSDisplay-Medium", size: 20)
         
-        noButton.titleLabel?.font = UIFont(name: "YSDisplay-Medium", size: 24)
+        noButton.titleLabel?.font = UIFont(name: "YSDisplay-Medium", size: 20)
         
         alertPresenter = AlertPresenter(delegate: self)
         
