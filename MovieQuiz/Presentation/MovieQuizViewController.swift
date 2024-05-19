@@ -18,7 +18,7 @@ final class MovieQuizViewController: UIViewController {
         return .lightContent
     }
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-            
+    
     private var presenter : MovieQuizPresenter!
     
     
@@ -37,7 +37,7 @@ final class MovieQuizViewController: UIViewController {
         noButton.titleLabel?.font = UIFont(name: "YSDisplay-Medium", size: 20)
         
         presenter = MovieQuizPresenter(viewController: self)
-                
+        
         showLoadingIndicator()
         
         NSLayoutConstraint.activate([
@@ -61,7 +61,7 @@ final class MovieQuizViewController: UIViewController {
         imageUI.layer.masksToBounds = true
         imageUI.layer.borderWidth = 8
         imageUI.layer.borderColor = isCorrectAnswer ? UIColor.ypGreen.cgColor : UIColor.ypRed.cgColor
-        }
+    }
     
     func showLoadingIndicator(){
         
