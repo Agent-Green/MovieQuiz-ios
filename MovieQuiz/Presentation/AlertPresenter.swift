@@ -17,12 +17,16 @@ class AlertPresenter : AlertPresenterProtocol {
         self.delegate = delegate
     }
     
+    
+    
     func showAlert(model result : AlertModel){
         let alert = UIAlertController(
             title: result.title,
             message: result.message,
             preferredStyle: .alert)
         
+        alert.view.accessibilityIdentifier = "Game result"
+
         let action = UIAlertAction(title: result.buttonText, style: .default) {  _ in
             
             result.completion()
@@ -31,6 +35,7 @@ class AlertPresenter : AlertPresenterProtocol {
         alert.addAction(action)
         
         delegate?.present(alert, animated: true, completion: nil)
+        
     }
     
 }
