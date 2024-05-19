@@ -1,6 +1,7 @@
 import UIKit
 
-final class MovieQuizViewController: UIViewController {
+final class MovieQuizViewController: UIViewController, MovieQuizViewControllerProtocol {
+    
     
     @IBOutlet private weak var questionLabel: UILabel!
     
@@ -47,14 +48,42 @@ final class MovieQuizViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // MARK: - Actions
+    
+    @IBAction private func yesButtonClicked(_ sender: UIButton) {
+        presenter.yesButtonClicked()
+    }
+    
+    @IBAction private func noButtonClicked(_ sender: UIButton) {
+        presenter.noButtonClicked()
+    }
+    
     // MARK: - Private functions
     
     func show(quiz step: QuizStepViewModel) {
-        
-        indexLabel.text = step.questionNumber
+        imageUI.layer.borderColor = UIColor.clear.cgColor
         imageUI.image = step.image
         questionLabel.text = step.question
-        
+        indexLabel.text = step.questionNumber
+    }
+
+    func show(quiz result: QuizResultsViewModel) {
+        let message = presenter.makeResultsMessage()
+
+        let alert = UIAlertController(
+            title: result.title,
+            message: message,
+            preferredStyle: .alert)
+
+            let action = UIAlertAction(title: result.buttonText, style: .default) { [weak self] _ in
+                guard let self = self else { return }
+
+                self.presenter.restartGame()
+            }
+
+        alert.addAction(action)
+
+        self.present(alert, animated: true, completion: nil)
     }
     
     func highlightImageBorder(isCorrectAnswer: Bool) {
@@ -63,45 +92,30 @@ final class MovieQuizViewController: UIViewController {
         imageUI.layer.borderColor = isCorrectAnswer ? UIColor.ypGreen.cgColor : UIColor.ypRed.cgColor
     }
     
-    func showLoadingIndicator(){
-        
-        activityIndicator.isHidden = false
-        activityIndicator.startAnimating()
+    func showLoadingIndicator() {
+        activityIndicator.isHidden = false // говорим, что индикатор загрузки не скрыт
+        activityIndicator.startAnimating() // включаем анимацию
     }
     
-    func hideLoadingIndicator(){
-        
+    func hideLoadingIndicator() {
         activityIndicator.isHidden = true
-        activityIndicator.startAnimating()
     }
     
-    func showNetworkError(message: String){
-        
+    func showNetworkError(message: String) {
         hideLoadingIndicator()
         
-        let alertModel = AlertModel(
+        let alert = UIAlertController(
             title: "Ошибка",
             message: message,
-            buttonText: "Попробовать еще раз",
-            completion: {[weak self] in
-                guard let self = self else {return}
-                
-                self.presenter.restartGame()
-                
-            })
-        presenter.alertPresenter?.showAlert(model: alertModel)
+            preferredStyle: .alert)
         
+        let action = UIAlertAction(title: "Попробовать ещё раз",
+                                   style: .default) { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.presenter.restartGame()
+        }
+        
+        alert.addAction(action)
     }
-    
-    // MARK: - Actions
-    
-    @IBAction private func yesButtonClicked(_ sender: UIButton) {
-        presenter.yesButtonClicked()
-    }
-    
-    @IBAction private func noButtonClicked(_ sender: UIButton) {
-        presenter.yesButtonClicked()
-    }
-    
 }
-
