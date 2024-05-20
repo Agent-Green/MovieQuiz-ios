@@ -11,7 +11,7 @@ import XCTest
 
 class ArrayTest : XCTestCase {
     
-    func testGetValueInRange () throws{  // test for correct index
+    func testGetValueInRange () throws {  // test for correct index
         
         // Given
         let array = [1,2,3,4,5,6,7,8,9]
@@ -24,7 +24,7 @@ class ArrayTest : XCTestCase {
         XCTAssertEqual(value, 3)
     }
     
-    func testGetValueOutOfRange() throws{ // test for incorrect index
+    func testGetValueOutOfRange() throws { // test for incorrect index
         
         // Given
         let array = [1,2,3,4,5,6,7]
